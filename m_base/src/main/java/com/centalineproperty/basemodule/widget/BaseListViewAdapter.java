@@ -7,17 +7,11 @@ import android.widget.BaseAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
- * @author sun
- * @emil sunxl8@centaline.com.cn
- * create at 18-5-23
- * description:
- */
-public abstract class BaseListViewAdapter<D> extends BaseAdapter {
+public abstract class BaseListViewAdapter<T> extends BaseAdapter {
     /**
      * 数据集
      */
-    protected final List<D> mDataSet = new ArrayList<>();
+    protected final List<T> mDataSet = new ArrayList<>();
     /**
      * Item Layout
      */
@@ -30,7 +24,7 @@ public abstract class BaseListViewAdapter<D> extends BaseAdapter {
         mItemLayoutId = layoutId;
     }
 
-    public BaseListViewAdapter(int layoutId, List<D> datas) {
+    public BaseListViewAdapter(int layoutId, List<T> datas) {
         mItemLayoutId = layoutId;
         mDataSet.addAll(datas);
     }
@@ -38,7 +32,7 @@ public abstract class BaseListViewAdapter<D> extends BaseAdapter {
     /**
      * @param item
      */
-    public void addItem(D item) {
+    public void addItem(T item) {
         mDataSet.add(item);
         notifyDataSetChanged();
     }
@@ -46,7 +40,7 @@ public abstract class BaseListViewAdapter<D> extends BaseAdapter {
     /**
      * @param items
      */
-    public void addItems(List<D> items) {
+    public void addItems(List<T> items) {
         mDataSet.addAll(items);
         notifyDataSetChanged();
     }
@@ -54,7 +48,7 @@ public abstract class BaseListViewAdapter<D> extends BaseAdapter {
     /**
      * @param item
      */
-    public void addItemToHead(D item) {
+    public void addItemToHead(T item) {
         mDataSet.add(0, item);
         notifyDataSetChanged();
     }
@@ -62,7 +56,7 @@ public abstract class BaseListViewAdapter<D> extends BaseAdapter {
     /**
      * @param items
      */
-    public void addItemsToHead(List<D> items) {
+    public void addItemsToHead(List<T> items) {
         mDataSet.addAll(0, items);
         notifyDataSetChanged();
     }
@@ -78,7 +72,7 @@ public abstract class BaseListViewAdapter<D> extends BaseAdapter {
     /**
      * @param item
      */
-    public void remove(D item) {
+    public void remove(T item) {
         mDataSet.remove(item);
         notifyDataSetChanged();
     }
@@ -104,7 +98,7 @@ public abstract class BaseListViewAdapter<D> extends BaseAdapter {
      * @return
      */
     @Override
-    public D getItem(int position) {
+    public T getItem(int position) {
         return mDataSet.get(position);
     }
 
@@ -151,5 +145,5 @@ public abstract class BaseListViewAdapter<D> extends BaseAdapter {
      * @param position   数据的位置
      * @param item       数据项
      */
-    protected abstract void onBindData(BaseListViewHolder viewHolder, int position, D item);
+    protected abstract void onBindData(BaseListViewHolder viewHolder, int position, T item);
 }

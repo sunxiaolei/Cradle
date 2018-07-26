@@ -10,12 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
-/*
- * @author sun
- * @emil sunxl8@centaline.com.cn
- * create at 18-5-23
- * description:
- */
 public class BaseListViewHolder {
     /**
      * ViewHolder实现类,桥接模式适配AbsListView与RecyclerView的二维变化

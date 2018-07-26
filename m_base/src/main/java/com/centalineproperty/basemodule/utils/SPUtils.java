@@ -10,7 +10,8 @@ import java.util.Map;
  */
 public class SPUtils {
 
-    private static volatile SPUtils spUtils;
+    private static final String SP_NAME = "SP_NAME";
+    private static SPUtils spUtils;
 
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
@@ -21,13 +22,9 @@ public class SPUtils {
         editor.apply();
     }
 
-    public static SPUtils getInstance(String spName) {
+    public static SPUtils getInstance() {
         if (spUtils == null) {
-            synchronized (SPUtils.class) {
-                if (spUtils == null) {
-                    spUtils = new SPUtils(spName);
-                }
-            }
+            spUtils = new SPUtils(SP_NAME);
         }
         return spUtils;
     }

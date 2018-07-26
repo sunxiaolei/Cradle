@@ -13,12 +13,6 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-/*
- * @author sun
- * @emil sunxl8@centaline.com.cn
- * create at 18-5-23
- * description:
- */
 public class ViewHolderImpl {
 
     /**
