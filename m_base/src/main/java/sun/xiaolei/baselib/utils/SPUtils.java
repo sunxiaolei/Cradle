@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 
 import java.util.Map;
 
+import sun.xiaolei.baselib.Cradle;
+
 /**
  * SP相关工具类
  */
@@ -17,7 +19,7 @@ public class SPUtils {
     private SharedPreferences.Editor editor;
 
     private SPUtils(String spName) {
-        sp = Utils.getContext().getSharedPreferences(spName, Context.MODE_PRIVATE);
+        sp = Cradle.getContext().getSharedPreferences(spName, Context.MODE_PRIVATE);
         editor = sp.edit();
         editor.apply();
     }

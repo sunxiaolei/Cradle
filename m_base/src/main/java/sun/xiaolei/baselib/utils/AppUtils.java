@@ -22,6 +22,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import sun.xiaolei.baselib.Cradle;
+
 /**
  * App相关工具类
  */
@@ -34,7 +36,7 @@ public class AppUtils {
      * @return {@code true}: 已安装<br>{@code false}: 未安装
      */
     public static boolean isInstallApp(String packageName) {
-        return !StringUtils.isSpace(packageName) && Utils.getContext().getPackageManager().getLaunchIntentForPackage(packageName) != null;
+        return !StringUtils.isSpace(packageName) && Cradle.getContext().getPackageManager().getLaunchIntentForPackage(packageName) != null;
     }
 
     /**
@@ -62,12 +64,12 @@ public class AppUtils {
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            Uri contentUri = FileProvider.getUriForFile(Utils.getContext(), BuildConfig.APPLICATION_ID + ".fileProvider", file);
+            Uri contentUri = FileProvider.getUriForFile(Cradle.getContext(), BuildConfig.APPLICATION_ID + ".fileProvider", file);
             intent.setDataAndType(contentUri, type);
         }
         intent.setDataAndType(Uri.fromFile(file), type);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        Utils.getContext().startActivity(intent);
+        Cradle.getContext().startActivity(intent);
     }
 
     /**
@@ -132,7 +134,7 @@ public class AppUtils {
         Intent intent = new Intent(Intent.ACTION_DELETE);
         intent.setData(Uri.parse("package:" + packageName));
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        Utils.getContext().startActivity(intent);
+        Cradle.getContext().startActivity(intent);
     }
 
     /**
@@ -189,7 +191,7 @@ public class AppUtils {
      */
     public static void launchApp(String packageName) {
         if (StringUtils.isSpace(packageName)) return;
-        Utils.getContext().startActivity(Utils.getContext().getPackageManager().getLaunchIntentForPackage(packageName));
+        Cradle.getContext().startActivity(Cradle.getContext().getPackageManager().getLaunchIntentForPackage(packageName));
     }
 
     /**
@@ -210,14 +212,14 @@ public class AppUtils {
      * @return App包名
      */
     public static String getAppPackageName() {
-        return Utils.getContext().getPackageName();
+        return Cradle.getContext().getPackageName();
     }
 
     /**
      * 获取App具体设置
      */
     public static void getAppDetailsSettings() {
-        getAppDetailsSettings(Utils.getContext().getPackageName());
+        getAppDetailsSettings(Cradle.getContext().getPackageName());
     }
 
     /**
@@ -230,7 +232,7 @@ public class AppUtils {
         Intent intent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
         intent.setData(Uri.parse("package:" + packageName));
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        Utils.getContext().startActivity(intent);
+        Cradle.getContext().startActivity(intent);
     }
 
     /**
@@ -239,7 +241,7 @@ public class AppUtils {
      * @return App名称
      */
     public static String getAppName() {
-        return getAppName(Utils.getContext().getPackageName());
+        return getAppName(Cradle.getContext().getPackageName());
     }
 
     /**
@@ -251,7 +253,7 @@ public class AppUtils {
     public static String getAppName(String packageName) {
         if (StringUtils.isSpace(packageName)) return null;
         try {
-            PackageManager pm = Utils.getContext().getPackageManager();
+            PackageManager pm = Cradle.getContext().getPackageManager();
             PackageInfo pi = pm.getPackageInfo(packageName, 0);
             return pi == null ? null : pi.applicationInfo.loadLabel(pm).toString();
         } catch (PackageManager.NameNotFoundException e) {
@@ -266,7 +268,7 @@ public class AppUtils {
      * @return App图标
      */
     public static Drawable getAppIcon() {
-        return getAppIcon(Utils.getContext().getPackageName());
+        return getAppIcon(Cradle.getContext().getPackageName());
     }
 
     /**
@@ -278,7 +280,7 @@ public class AppUtils {
     public static Drawable getAppIcon(String packageName) {
         if (StringUtils.isSpace(packageName)) return null;
         try {
-            PackageManager pm = Utils.getContext().getPackageManager();
+            PackageManager pm = Cradle.getContext().getPackageManager();
             PackageInfo pi = pm.getPackageInfo(packageName, 0);
             return pi == null ? null : pi.applicationInfo.loadIcon(pm);
         } catch (PackageManager.NameNotFoundException e) {
@@ -293,7 +295,7 @@ public class AppUtils {
      * @return App路径
      */
     public static String getAppPath() {
-        return getAppPath(Utils.getContext().getPackageName());
+        return getAppPath(Cradle.getContext().getPackageName());
     }
 
     /**
@@ -305,7 +307,7 @@ public class AppUtils {
     public static String getAppPath(String packageName) {
         if (StringUtils.isSpace(packageName)) return null;
         try {
-            PackageManager pm = Utils.getContext().getPackageManager();
+            PackageManager pm = Cradle.getContext().getPackageManager();
             PackageInfo pi = pm.getPackageInfo(packageName, 0);
             return pi == null ? null : pi.applicationInfo.sourceDir;
         } catch (PackageManager.NameNotFoundException e) {
@@ -320,7 +322,7 @@ public class AppUtils {
      * @return App版本号
      */
     public static String getAppVersionName() {
-        return getAppVersionName(Utils.getContext().getPackageName());
+        return getAppVersionName(Cradle.getContext().getPackageName());
     }
 
     /**
@@ -332,7 +334,7 @@ public class AppUtils {
     public static String getAppVersionName(String packageName) {
         if (StringUtils.isSpace(packageName)) return null;
         try {
-            PackageManager pm = Utils.getContext().getPackageManager();
+            PackageManager pm = Cradle.getContext().getPackageManager();
             PackageInfo pi = pm.getPackageInfo(packageName, 0);
             return pi == null ? null : pi.versionName;
         } catch (PackageManager.NameNotFoundException e) {
@@ -347,7 +349,7 @@ public class AppUtils {
      * @return App版本码
      */
     public static int getAppVersionCode() {
-        return getAppVersionCode(Utils.getContext().getPackageName());
+        return getAppVersionCode(Cradle.getContext().getPackageName());
     }
 
     /**
@@ -359,7 +361,7 @@ public class AppUtils {
     public static int getAppVersionCode(String packageName) {
         if (StringUtils.isSpace(packageName)) return -1;
         try {
-            PackageManager pm = Utils.getContext().getPackageManager();
+            PackageManager pm = Cradle.getContext().getPackageManager();
             PackageInfo pi = pm.getPackageInfo(packageName, 0);
             return pi == null ? -1 : pi.versionCode;
         } catch (PackageManager.NameNotFoundException e) {
@@ -374,7 +376,7 @@ public class AppUtils {
      * @return {@code true}: 是<br>{@code false}: 否
      */
     public static boolean isSystemApp() {
-        return isSystemApp(Utils.getContext().getPackageName());
+        return isSystemApp(Cradle.getContext().getPackageName());
     }
 
     /**
@@ -386,7 +388,7 @@ public class AppUtils {
     public static boolean isSystemApp(String packageName) {
         if (StringUtils.isSpace(packageName)) return false;
         try {
-            PackageManager pm = Utils.getContext().getPackageManager();
+            PackageManager pm = Cradle.getContext().getPackageManager();
             ApplicationInfo ai = pm.getApplicationInfo(packageName, 0);
             return ai != null && (ai.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
         } catch (PackageManager.NameNotFoundException e) {
@@ -401,7 +403,7 @@ public class AppUtils {
      * @return {@code true}: 是<br>{@code false}: 否
      */
     public static boolean isAppDebug() {
-        return isAppDebug(Utils.getContext().getPackageName());
+        return isAppDebug(Cradle.getContext().getPackageName());
     }
 
     /**
@@ -413,7 +415,7 @@ public class AppUtils {
     public static boolean isAppDebug(String packageName) {
         if (StringUtils.isSpace(packageName)) return false;
         try {
-            PackageManager pm = Utils.getContext().getPackageManager();
+            PackageManager pm = Cradle.getContext().getPackageManager();
             ApplicationInfo ai = pm.getApplicationInfo(packageName, 0);
             return ai != null && (ai.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
         } catch (PackageManager.NameNotFoundException e) {
@@ -428,7 +430,7 @@ public class AppUtils {
      * @return App签名
      */
     public static Signature[] getAppSignature() {
-        return getAppSignature(Utils.getContext().getPackageName());
+        return getAppSignature(Cradle.getContext().getPackageName());
     }
 
     /**
@@ -441,7 +443,7 @@ public class AppUtils {
     public static Signature[] getAppSignature(String packageName) {
         if (StringUtils.isSpace(packageName)) return null;
         try {
-            PackageManager pm = Utils.getContext().getPackageManager();
+            PackageManager pm = Cradle.getContext().getPackageManager();
             PackageInfo pi = pm.getPackageInfo(packageName, PackageManager.GET_SIGNATURES);
             return pi == null ? null : pi.signatures;
         } catch (PackageManager.NameNotFoundException e) {
@@ -457,7 +459,7 @@ public class AppUtils {
      * @return 应用签名的SHA1字符串, 比如：53:FD:54:DC:19:0F:11:AC:B5:22:9E:F1:1A:68:88:1B:8B:E8:54:42
      */
     public static String getAppSignatureSHA1() {
-        return getAppSignatureSHA1(Utils.getContext().getPackageName());
+        return getAppSignatureSHA1(Cradle.getContext().getPackageName());
     }
 
     /**
@@ -480,12 +482,12 @@ public class AppUtils {
      * @return {@code true}: 是<br>{@code false}: 否
      */
     public static boolean isAppForeground() {
-        ActivityManager manager = (ActivityManager) Utils.getContext().getSystemService(Context.ACTIVITY_SERVICE);
+        ActivityManager manager = (ActivityManager) Cradle.getContext().getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningAppProcessInfo> infos = manager.getRunningAppProcesses();
         if (infos == null || infos.size() == 0) return false;
         for (ActivityManager.RunningAppProcessInfo info : infos) {
             if (info.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND) {
-                return info.processName.equals(Utils.getContext().getPackageName());
+                return info.processName.equals(Cradle.getContext().getPackageName());
             }
         }
         return false;
@@ -611,7 +613,7 @@ public class AppUtils {
      * @return 当前应用的AppInfo
      */
     public static AppInfo getAppInfo() {
-        return getAppInfo(Utils.getContext().getPackageName());
+        return getAppInfo(Cradle.getContext().getPackageName());
     }
 
     /**
@@ -623,7 +625,7 @@ public class AppUtils {
      */
     public static AppInfo getAppInfo(String packageName) {
         try {
-            PackageManager pm = Utils.getContext().getPackageManager();
+            PackageManager pm = Cradle.getContext().getPackageManager();
             PackageInfo pi = pm.getPackageInfo(packageName, 0);
             return getBean(pm, pi);
         } catch (PackageManager.NameNotFoundException e) {
@@ -661,7 +663,7 @@ public class AppUtils {
      */
     public static List<AppInfo> getAppsInfo() {
         List<AppInfo> list = new ArrayList<>();
-        PackageManager pm = Utils.getContext().getPackageManager();
+        PackageManager pm = Cradle.getContext().getPackageManager();
         // 获取系统中安装的所有软件信息
         List<PackageInfo> installedPackages = pm.getInstalledPackages(0);
         for (PackageInfo pi : installedPackages) {
