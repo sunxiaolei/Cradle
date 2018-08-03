@@ -40,7 +40,7 @@ ext {
     //adapter
     baseRecyclerView = '2.9.40'
     //刷新
-    smartRefreshLayout = '1.1.0-alpha-2'
+    smartRefreshLayout = '1.1.0-alpha-14'
     //顶部toast
     crouton = '1.8.5@aar'
     //闪动
