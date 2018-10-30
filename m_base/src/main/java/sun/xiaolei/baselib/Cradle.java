@@ -2,6 +2,8 @@ package sun.xiaolei.baselib;
 
 import android.content.Context;
 
+import sun.xiaolei.baselib.utils.KvUtils;
+
 /*
  * @author sun
  * @emil sunxl8@centaline.com.cn
@@ -14,6 +16,7 @@ public class Cradle {
 
     public static void init(Context context) {
         Cradle.context = context.getApplicationContext();
+        KvUtils.init(context);
     }
 
     public static Context getContext() {
