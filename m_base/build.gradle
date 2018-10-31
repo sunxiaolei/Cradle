@@ -10,11 +10,11 @@ android {
 
         multiDexEnabled true
 
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
-            }
-        }
+//        javaCompileOptions {
+//            annotationProcessorOptions {
+//                arguments = [AROUTER_MODULE_NAME: project.getName()]
+//            }
+//        }
     }
 
     buildTypes {
@@ -28,7 +28,6 @@ android {
         }
     }
 
-    buildToolsVersion '27.0.3'
 }
 
 dependencies {
@@ -42,8 +41,8 @@ dependencies {
     api rootProject.ext.dependencies["constraint"]
 
     //router
-    api rootProject.ext.dependencies["arouter"]
-    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+//    api rootProject.ext.dependencies["arouter"]
+//    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
 
     //network
     api rootProject.ext.dependencies["retrofit"]

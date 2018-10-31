@@ -2,11 +2,9 @@ package sun.xiaolei.baselib.base;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import sun.xiaolei.baselib.utils.StatusBarUtil;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
@@ -40,7 +38,6 @@ public abstract class BaseSwipeBackActivity<T extends IPresenter> extends RxAppC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ARouter.getInstance().inject(this);
         mHelper = new SwipeBackActivityHelper(this);
         mHelper.onActivityCreate();
         setContentView(createContentView());

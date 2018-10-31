@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatDelegate;
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import sun.xiaolei.baselib.utils.StatusBarUtil;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
@@ -32,7 +31,6 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ARouter.getInstance().inject(this);
         setContentView(createContentView());
 
         StatusBarUtil.setStatusBarColor(this, Color.WHITE, true);
