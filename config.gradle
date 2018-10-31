@@ -98,6 +98,8 @@ ext {
             "crouton"                  : "de.keyboardsurfer.android.widget:crouton:1.8.5@aar",
             //蒙板
             "NewbieGuide"              : "com.github.huburt-Hu:NewbieGuide:v2.0.0",
+            //返回退出
+            "swipebacklayout"          : "me.imid.swipebacklayout.lib:library:1.1.0",
     ]
 }
 

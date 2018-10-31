@@ -110,6 +110,7 @@ dependencies {
     api rootProject.ext.dependencies["slidinguppanel"]
     //仿toast
     api rootProject.ext.dependencies["crouton"]
+    api rootProject.ext.dependencies["swipebacklayout"]
 
 
 }
