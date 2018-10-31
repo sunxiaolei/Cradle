@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatDelegate;
 
 import sun.xiaolei.baselib.utils.StatusBarUtil;
+
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 /**
@@ -15,6 +16,8 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActivity implements IView {
 
     protected T mPresenter;
+
+    protected BaseLoadingDialog loadingDialog;
 
     static {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
@@ -48,4 +51,15 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
         if (mPresenter != null) mPresenter.detachView();
     }
 
+    protected void showLoading() {
+        if (loadingDialog != null) {
+            loadingDialog.show();
+        }
+    }
+
+    protected void dismissLaoding() {
+        if (loadingDialog != null) {
+            loadingDialog.dismiss();
+        }
+    }
 }

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
 
 import sun.xiaolei.baselib.utils.StatusBarUtil;
+
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
@@ -20,6 +21,8 @@ import me.imid.swipebacklayout.lib.app.SwipeBackActivityHelper;
 public abstract class BaseSwipeBackActivity<T extends IPresenter> extends RxAppCompatActivity implements IView, SwipeBackActivityBase {
 
     protected T mPresenter;
+
+    protected BaseLoadingDialog loadingDialog;
 
     static {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
@@ -85,6 +88,18 @@ public abstract class BaseSwipeBackActivity<T extends IPresenter> extends RxAppC
     protected void onDestroy() {
         super.onDestroy();
         if (mPresenter != null) mPresenter.detachView();
+    }
+
+    protected void showLoading() {
+        if (loadingDialog != null) {
+            loadingDialog.show();
+        }
+    }
+
+    protected void dismissLaoding() {
+        if (loadingDialog != null) {
+            loadingDialog.dismiss();
+        }
     }
 
 }
