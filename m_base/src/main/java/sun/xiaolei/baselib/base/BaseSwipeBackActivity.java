@@ -22,7 +22,6 @@ public abstract class BaseSwipeBackActivity<T extends IPresenter> extends RxAppC
 
     protected T mPresenter;
 
-    protected BaseLoadingDialog loadingDialog;
 
     static {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
@@ -88,18 +87,6 @@ public abstract class BaseSwipeBackActivity<T extends IPresenter> extends RxAppC
     protected void onDestroy() {
         super.onDestroy();
         if (mPresenter != null) mPresenter.detachView();
-    }
-
-    protected void showLoading() {
-        if (loadingDialog != null) {
-            loadingDialog.show();
-        }
-    }
-
-    protected void dismissLaoding() {
-        if (loadingDialog != null) {
-            loadingDialog.dismiss();
-        }
     }
 
 }

@@ -17,8 +17,6 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
 
     protected T mPresenter;
 
-    protected BaseLoadingDialog loadingDialog;
-
     static {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
     }
@@ -49,17 +47,5 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
     protected void onDestroy() {
         super.onDestroy();
         if (mPresenter != null) mPresenter.detachView();
-    }
-
-    protected void showLoading() {
-        if (loadingDialog != null) {
-            loadingDialog.show();
-        }
-    }
-
-    protected void dismissLaoding() {
-        if (loadingDialog != null) {
-            loadingDialog.dismiss();
-        }
     }
 }
