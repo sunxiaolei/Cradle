@@ -77,6 +77,7 @@ dependencies {
 
     //图片压缩
     api rootProject.ext.dependencies["Luban"]
+    api rootProject.ext.dependencies["compressor"]
     //图片显示
     api rootProject.ext.dependencies["PhotoView"]
     //图片选择
