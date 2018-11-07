@@ -1,0 +1,14 @@
+<resources>
+
+
+    <!-- 全屏的主题 -->
+    <style name="PermissionActivityTheme" parent="@style/Theme.AppCompat.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+
+</resources>

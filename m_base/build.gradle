@@ -77,8 +77,10 @@ dependencies {
 
     //图片压缩
     api rootProject.ext.dependencies["Luban"]
-    //图片选择
+    //图片显示
     api rootProject.ext.dependencies["PhotoView"]
+    //图片选择
+    api rootProject.ext.dependencies["matisse"]
 
     //Guava
     api rootProject.ext.dependencies["guava"]
@@ -110,6 +112,6 @@ dependencies {
     //仿toast
     api rootProject.ext.dependencies["crouton"]
     api rootProject.ext.dependencies["swipebacklayout"]
-
+    api rootProject.ext.dependencies["LoadingDialog"]
 
 }
