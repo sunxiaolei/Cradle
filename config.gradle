@@ -6,7 +6,7 @@ ext {
     buildToolsVersion = '27.0.1'
 
     dependVersion = [
-            "support"    : "27.1.0",
+            "support"    : "27.1.1",
             "constraint" : "1.1.0",
             "retrofit"   : "2.4.0",
             "rxbinding"  : "2.1.1",
