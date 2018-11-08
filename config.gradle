@@ -59,7 +59,7 @@ ext {
             "Luban"                    : "top.zibin:Luban:1.1.8",
             "compressor"               : "id.zelory:compressor:2.1.0",
             //图片显示
-            "PhotoView"                : "com.github.chrisbanes:PhotoView:2.2.0",
+            "PhotoView"                : "com.github.chrisbanes:PhotoView:1.3.0",
             //图片选择
             "matisse"                  : "com.zhihu.android:matisse:0.5.1",
             //工具库guava
